@@ -39,4 +39,8 @@ export class QuizComponent implements OnInit {
   nextQuestion(): void {
     this.quizService.nextQuestion();
   }
+
+  restart() {
+    this.quizService.restart();
+  }
 }

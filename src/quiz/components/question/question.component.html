@@ -1,11 +1,13 @@
-<p class="question">
-  {{ (question$ | async).question }}
-</p>
-
-<div class="answers">
-  <div *ngFor="let answer of (answers$ | async)">
-    {{ answer }}
+<div>
+  <p class="question">
+    {{ (question$ | async).question }}
+  </p>
+  <div class="answers">
+    <app-quiz-answer
+      *ngFor="let answer of (answers$ | async); let i = index"
+      [answer]="answer"
+      [index]="i"
+      class="answer"
+    ></app-quiz-answer>
   </div>
 </div>
-
-<!-- <app-quiz-answer></app-quiz-answer> -->

@@ -8,6 +8,7 @@
         <div>You have completed the quiz</div>
         <div>You've got {{ correctAnswersCount$ | async }} out of {{ questionsLength$ | async }}</div>
       </div>
+      <button (click)="restart()">Restart</button>
     </div>
   </div>
   <div *ngIf="!(showResults$ | async)">
