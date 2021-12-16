@@ -13,6 +13,7 @@ export class QuizService {
     showResults: false,
     correctAnswersCount: 0,
     answers: this.shuffleAnswers(mockData[0]),
+    selectedAnswer: '',
   };
 
   state$ = new BehaviorSubject<QuizState>({ ...this.initialState });
@@ -51,6 +52,20 @@ export class QuizService {
 
   restart() {
     this.setState(this.initialState);
+  }
+
+  selectAnswer(answer: string): void {
+    console.log('answer', answer);
+    const state = this.getState();
+
+    const correctAnswersCount = (answer === state.questions[state.currentQuestionIndex].correctAnswer)
+      ? state.correctAnswersCount + 1
+      : state.correctAnswersCount;
+
+    this.setState({
+      selectedAnswer: answer,
+      correctAnswersCount,
+    });
   }
 
   shuffleAnswers(question: Question): string[] {
