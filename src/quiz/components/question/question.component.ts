@@ -12,10 +12,15 @@ import { QuizState } from 'src/quiz/types/quiz-state.interface';
 export class QuestionComponent {
   title = 'question component';
   question$: Observable<Question>;
+  answers$: Observable<string[]>;
 
   constructor(private quizService: QuizService) {
     this.question$ = this.quizService.state$.pipe(
       map((state: QuizState) => state.questions[state.currentQuestionIndex])
+    );
+
+    this.answers$ = this.quizService.state$.pipe(
+      map((state: QuizState) => state.answers)
     );
   }
 }

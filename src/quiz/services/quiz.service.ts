@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { QuizState } from '../types/quiz-state.interface';
 import mockData from '../data';
+import { Question } from '../types/question.interface';
 
 @Injectable()
 export class QuizService {
@@ -11,6 +12,7 @@ export class QuizService {
     currentQuestionIndex: 0,
     showResults: false,
     correctAnswersCount: 0,
+    answers: this.shuffleAnswers(mockData[0]),
   });
 
   setState(partialState: Partial<QuizState>): void {
@@ -33,5 +35,19 @@ export class QuizService {
     this.setState({
       currentQuestionIndex,
     });
+  }
+
+  shuffleAnswers(question: Question): string[] {
+    const answers = [
+      ...question.incorrectAnswers,
+      question.correctAnswer,
+    ];
+
+    return answers.map((answer: string) => ({
+      sort: Math.random(),
+      answer,
+    }))
+      .sort((a, b) => a.sort - b.sort)
+      .map((el) => el.answer);
   }
 }

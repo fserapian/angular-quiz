@@ -2,4 +2,10 @@
   {{ (question$ | async).question }}
 </p>
 
-<app-quiz-answer></app-quiz-answer>
+<div class="answers">
+  <div *ngFor="let answer of (answers$ | async)">
+    {{ answer }}
+  </div>
+</div>
+
+<!-- <app-quiz-answer></app-quiz-answer> -->

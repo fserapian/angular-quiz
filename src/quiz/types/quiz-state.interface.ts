@@ -5,4 +5,5 @@ export interface QuizState {
   currentQuestionIndex: number;
   showResults: boolean;
   correctAnswersCount: number;
+  answers: string[];
 }
