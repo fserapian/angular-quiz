@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AnswerComponent } from './components/answer/answer.component';
 import { QuestionComponent } from './components/question/question.component';
-
 import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizService } from './services/quiz.service';
 

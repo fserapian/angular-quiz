@@ -10,6 +10,7 @@ export class QuizService {
     questions: mockData,
     currentQuestionIndex: 0,
     showResults: false,
+    correctAnswersCount: 0,
   });
 
   setState(partialState: Partial<QuizState>): void {

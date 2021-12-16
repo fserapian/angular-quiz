@@ -6,7 +6,7 @@
       </div>
       <div class="results-info">
         <div>You have completed the quiz</div>
-        <div>You've got 5 out of {{ questionsLength$ | async }}</div>
+        <div>You've got {{ correctAnswersCount$ | async }} out of {{ questionsLength$ | async }}</div>
       </div>
     </div>
   </div>
