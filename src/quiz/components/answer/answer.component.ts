@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { QuizService } from 'src/quiz/services/quiz.service';
 
 @Component({
@@ -6,25 +6,21 @@ import { QuizService } from 'src/quiz/services/quiz.service';
   templateUrl: './answer.component.html',
   styleUrls: ['./answer.component.css']
 })
-export class AnswerComponent implements OnInit {
+export class AnswerComponent {
   title = 'answer component';
-  @Input() answer!: string;
-  @Input() index!: number;
+  @Input() answer: string;
+  @Input() index: number;
+  @Input() selectedAnswer: string;
+  @Input() correctAnswer: string;
+
+  @Output('selectAnswer') selectAnswerEvent = new EventEmitter<string>();
 
   letterMapping: string[] = ['A', 'B', 'C', 'D'];
 
-  constructor(private quizService: QuizService) {}
-
-  ngOnInit(): void {
-    // console.log('ans', this.answer);
-  }
+  // constructor(private quizService: QuizService) {}
 
   @HostListener('click', ['$event'])
   onClick() {
-    this.quizService.selectAnswer(this.answer);
+    this.selectAnswerEvent.emit(this.answer);
   }
-
-  // onClick() {
-  //   console.log('clicked');
-  // }
 }

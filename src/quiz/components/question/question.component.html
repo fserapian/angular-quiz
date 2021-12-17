@@ -1,13 +1,19 @@
 <div>
   <p class="question">
-    {{ (question$ | async).question }}
+    {{ (question$ | async)?.question }}
   </p>
   <div class="answers">
     <app-quiz-answer
-      *ngFor="let answer of (answers$ | async); let i = index"
+      *ngFor="let answer of answers$ | async; let i = index"
       [answer]="answer"
       [index]="i"
-      class="answer"
+      (selectAnswer)="onSelectAnswer($event)"
+      [ngClass]="{
+        answer: true,
+        'correct-answer': isCorrectAnswer(answer),
+        'wrong-answer': isWrongAnswer(answer),
+        'disabled-answer': isDisabledAnswer()
+      }"
     ></app-quiz-answer>
   </div>
 </div>

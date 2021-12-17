@@ -6,5 +6,6 @@ export interface QuizState {
   showResults: boolean;
   correctAnswersCount: number;
   answers: string[];
-  selectedAnswer: string;
+  selectedAnswer: string | null;
+  correctAnswer: string | null;
 }
